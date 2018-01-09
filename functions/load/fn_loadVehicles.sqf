@@ -40,7 +40,7 @@ _vehiclesData = [_vehiclesTag] call grad_persistence_fnc_getSaveData;
         [_thisVehicle,_inventory] call grad_persistence_fnc_loadVehicleInventory;
 
         if (_isGradFort && {isClass (missionConfigFile >> "CfgFunctions" >> "GRAD_fortifications")}) then {
-            [_thisVehicle,objNull] remoteExec ["grad_fortifications_fnc_initFort",0,true];
+            [_thisVehicle,WEST] remoteExec ["grad_fortifications_fnc_initFort",0,true];
         };
 
     }, [_thisVehicle,_thisVehicleHash]] call CBA_fnc_waitUntilAndExecute;

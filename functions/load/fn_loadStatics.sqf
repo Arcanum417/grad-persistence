@@ -22,8 +22,13 @@ _staticsData = [_staticsTag] call grad_persistence_fnc_getSaveData;
         _thisStatic setDamage _damage;
 
         if (_isGradFort && {isClass (missionConfigFile >> "CfgFunctions" >> "GRAD_fortifications")}) then {
-            [_thisStatic,objNull] remoteExec ["grad_fortifications_fnc_initFort",0,true];
+          _log_it = [_thisStatic,WEST] remoteExec ["grad_fortifications_fnc_initFort",0,true];
+          diag_log "Inicializacia FOrt";
+          diag_log _log_it;
+          diag_log _thisStatic;
         };
+        diag_log "Is FOrt ?";
+        diag_log _isGradFort;
 
     }, [_thisStatic,_thisStaticHash]] call CBA_fnc_waitUntilAndExecute;
 
