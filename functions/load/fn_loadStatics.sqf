@@ -22,8 +22,16 @@ _staticsData = [_staticsTag] call grad_persistence_fnc_getSaveData;
         _thisStatic setDamage _damage;
 
         if (_isGradFort && {isClass (missionConfigFile >> "CfgFunctions" >> "GRAD_fortifications")}) then {
-          _log_it = [_thisStatic,WEST] remoteExec ["grad_fortifications_fnc_initFort",0,true];
+          _all_players = allPlayers - entities "HeadlessClient_F";
+          _blufor_player = _all_players[0];
+
+          {
+            if (side _x == WEST) then {_blufor_player = _x};
+          } forEach _all_players;
+
+          _log_it = [_thisStatic,_blufor_player] remoteExec ["grad_fortifications_fnc_initFort",0,true];
           diag_log "Inicializacia FOrt";
+          diag_log _blufor_player;
           diag_log _log_it;
           diag_log _thisStatic;
         };
