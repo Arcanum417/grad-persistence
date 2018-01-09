@@ -18,7 +18,7 @@ _allVehicles = _allVehicles select {
     !(_x isKindOf "Static") &&
     {alive _x} &&
     {!(_x getVariable ["grad_persistence_isEditorObject",false])} &&
-    {!(_x getVariable ["grad_persistence_isExcluded",false])} && 
+    {!(_x getVariable ["grad_persistence_isExcluded",false])} &&
     {if (_area isEqualType false) then {true} else {_x inArea _area}}
 };
 
@@ -44,6 +44,7 @@ _allVehicles = _allVehicles select {
     [_thisVehicleHash,"turretMagazines", magazinesAllTurrets _x] call CBA_fnc_hashSet;
     [_thisVehicleHash,"inventory", _vehicleInventory] call CBA_fnc_hashSet;
     [_thisVehicleHash,"isGradFort",!isNil {_x getVariable "grad_fortifications_fortOwner"}] call CBA_fnc_hashSet;
+    [_thisVehicleHash,"invGradFort",_x getVariable ["grad_fortifications_myFortsHash",[[],0] call CBA_fnc_hashCreate]] call CBA_fnc_hashSet;
 
     _vehiclesData pushBack _thisVehicleHash;
 

@@ -27,6 +27,10 @@ _vehiclesData = [_vehiclesTag] call grad_persistence_fnc_getSaveData;
         _turretMagazines = [_thisVehicleHash,"turretMagazines"] call CBA_fnc_hashGet;
         _inventory = [_thisVehicleHash,"inventory"] call CBA_fnc_hashGet;
         _isGradFort = [_thisVehicleHash,"isGradFort"] call CBA_fnc_hashGet;
+        _invGradFort = [_thisVehicleHash,"invGradFort"] call CBA_fnc_hashGet;
+
+        _thisVehicle setVariable ["grad_fortifications_myFortsHash",_invGradFort,true];
+        [_thisVehicle,_invGradFort] remoteExec ["grad_fortifications_fnc_updateItemList",0,false];
 
         _thisVehicle setVectorDirAndUp _vectorDirAndUp;
         _thisVehicle setPosASL _posASL;
