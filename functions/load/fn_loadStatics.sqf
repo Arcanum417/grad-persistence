@@ -23,7 +23,7 @@ _staticsData = [_staticsTag] call grad_persistence_fnc_getSaveData;
 
         if (_isGradFort && {isClass (missionConfigFile >> "CfgFunctions" >> "GRAD_fortifications")}) then {
           _all_players = allPlayers - entities "HeadlessClient_F";
-          _blufor_player = _all_players[0];
+          _blufor_player = _all_players select 0;
 
           {
             if (side _x == WEST) then {_blufor_player = _x};
