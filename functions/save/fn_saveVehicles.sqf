@@ -45,6 +45,7 @@ _allVehicles = _allVehicles select {
     [_thisVehicleHash,"inventory", _vehicleInventory] call CBA_fnc_hashSet;
     [_thisVehicleHash,"isGradFort",!isNil {_x getVariable "grad_fortifications_fortOwner"}] call CBA_fnc_hashSet;
     [_thisVehicleHash,"invGradFort",_x getVariable ["grad_fortifications_myFortsHash",[[],0] call CBA_fnc_hashCreate]] call CBA_fnc_hashSet;
+    [_thisVehicleHash,"fuel",fuel _x] call CBA_fnc_hashSet;
 
     _vehiclesData pushBack _thisVehicleHash;
 
