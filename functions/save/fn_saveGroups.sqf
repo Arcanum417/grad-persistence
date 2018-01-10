@@ -36,7 +36,7 @@ _allGroups = allGroups;
                 {alive _x} &&
                 {vehicle _x == _x} &&
                 {!(_x getVariable ["grad_persistence_isEditorObject",false])} &&
-                {!(_x getVariable ["grad_persistence_isExcluded",false])} && 
+                {!(_x getVariable ["grad_persistence_isExcluded",false])} &&
                 {!((group _x) getVariable ["grad_persistence_isExcluded",false])} &&
                 {if (_area isEqualType false) then {true} else {_x inArea _area}}
             ) then {
@@ -46,6 +46,7 @@ _allGroups = allGroups;
             [_thisUnitHash,"posASL",getPosASL _x] call CBA_fnc_hashSet;
             [_thisUnitHash,"dir",getDir _x] call CBA_fnc_hashSet;
             [_thisUnitHash,"damage",damage _x] call CBA_fnc_hashSet;
+            [_thisUnitHash, "inventory", getUnitLoadout _x] call CBA_fnc_hashSet;
 
             _thisUnitsData pushBack _thisUnitHash;
 

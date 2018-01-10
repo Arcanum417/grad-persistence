@@ -24,6 +24,12 @@ _groupsData = [_groupsTag] call grad_persistence_fnc_getSaveData;
             _thisUnit setDir _dir;
             _thisUnit setPosASL _posASL;
             _thisUnit setDamage _damage;
+
+            _unitLoadout = [_thisUnitHash,"inventory"] call CBA_fnc_hashGet;
+            if !(_unitLoadout isEqualType false) then {
+                _thisUnit setUnitLoadout [_unitLoadout,false];
+            };
+
         }, [_thisUnit,_thisUnitHash]] call CBA_fnc_waitUntilAndExecute;
 
         false
