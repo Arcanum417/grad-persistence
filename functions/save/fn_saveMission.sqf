@@ -18,6 +18,9 @@ if (_showWarning) then {
 
     _saveTeamAccounts = ([missionConfigFile >> "CfgGradPersistence", "saveTeamAccounts", 1] call BIS_fnc_returnConfigEntry) > 0;
     if (_saveTeamAccounts) then {[] call grad_persistence_fnc_saveTeamAccounts};
+	
+	_saveMapMarkers = ([missionConfigFile >> "CfgGradPersistence", "saveMapMarkers", 1] call BIS_fnc_returnConfigEntry) > 0;
+    if (_saveMapMarkers) then {[] call grad_persistence_fnc_saveMapMarkers};
 
     _savePlayerInventory = ([missionConfigFile >> "CfgGradPersistence", "savePlayerInventory", 1] call BIS_fnc_returnConfigEntry) == 1;
     _savePlayerDamage = ([missionConfigFile >> "CfgGradPersistence", "savePlayerDamage", 1] call BIS_fnc_returnConfigEntry) == 1;

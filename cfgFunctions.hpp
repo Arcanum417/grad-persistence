@@ -27,6 +27,7 @@ class GRAD_persistence {
         class createVehicleCrew {};
         class loadAllPlayers {};
         class loadGroups {};
+		class loadMapMarkers {};
         class loadMission {};
         class loadPlayer {};
         class loadStatics {};
@@ -44,6 +45,7 @@ class GRAD_persistence {
         class getInventory {};
         class saveAllPlayers {};
         class saveGroups {};
+		class saveMapMarkers {};
         class saveMission {};
         class savePlayer {};
         class saveStatics {};
