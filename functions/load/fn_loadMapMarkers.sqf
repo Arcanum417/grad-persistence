@@ -13,7 +13,7 @@ _markersData = [_markersTag] call grad_persistence_fnc_getSaveData;
     _icon = [_thisMarkerHash,"icon"] call CBA_fnc_hashGet;
     _text = [_thisMarkerHash,"text"] call CBA_fnc_hashGet;
     _dir = [_thisMarkerHash,"dir"] call CBA_fnc_hashGet;
-
+    _mrk = "";
     if (_name select [ 0, 13 ] != "_USER_DEFINED") then {
 								_mrk = createMarker [ format[ "%1%2_%3", "_USER_DEFINED ", _name, floor (random(4520)) ], _pos ];
 							}
