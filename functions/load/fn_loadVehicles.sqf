@@ -29,6 +29,8 @@ _vehiclesData = [_vehiclesTag] call grad_persistence_fnc_getSaveData;
         _isGradFort = [_thisVehicleHash,"isGradFort"] call CBA_fnc_hashGet;
         _invGradFort = [_thisVehicleHash,"invGradFort"] call CBA_fnc_hashGet;
         _fuel = [_thisVehicleHash,"fuel"] call CBA_fnc_hashGet;
+        _fuelCargo = [_thisVehicleHash,"fuelCargo"] call CBA_fnc_hashGet;
+        _ammoCargo = [_thisVehicleHash,"ammoCargo"] call CBA_fnc_hashGet;
 
         _thisVehicle setVariable ["grad_fortifications_myFortsHash",_invGradFort,true];
         [_thisVehicle,_invGradFort] remoteExec ["grad_fortifications_fnc_updateItemList",0,false];
@@ -36,6 +38,8 @@ _vehiclesData = [_vehiclesTag] call grad_persistence_fnc_getSaveData;
         _thisVehicle setVectorDirAndUp _vectorDirAndUp;
         _thisVehicle setPosASL _posASL;
         _thisVehicle setFuel _fuel;
+        [_thisVehicle, _fuelCargo] call ace_refuel_fnc_setFuel;
+        [_thisVehicle, _ammoCargo] call ace_rearm_fnc_setSupplyCount;
 
         [_thisVehicle,_turretMagazines] call grad_persistence_fnc_loadTurretMagazines;
         [_thisVehicle,_hitPointDamage] call grad_persistence_fnc_loadVehicleHits;
