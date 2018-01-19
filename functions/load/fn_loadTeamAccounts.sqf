@@ -22,6 +22,7 @@ _wavesData = [_teamAccountHash,"waves"] call CBA_fnc_hashGet;
 0 setRainbow _rainbowData;
 setWind _windData;
 0 setWaves _wavesData;
+forceWeatherChange;
 
 missionNamespace setVariable ["grad_lbm_teamFunds_WEST",[_teamAccountHash,"WEST"] call CBA_fnc_hashGet, true];
 missionNamespace setVariable ["grad_lbm_teamFunds_EAST",[_teamAccountHash,"EAST"] call CBA_fnc_hashGet, true];
