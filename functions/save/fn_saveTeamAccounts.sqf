@@ -19,4 +19,16 @@ _teamAccountHash = [_staticsTag,true,0] call grad_persistence_fnc_getSaveData;
 [_teamAccountHash,"INDEPENDENT",(missionNamespace getVariable ["grad_lbm_teamFunds_INDEPENDENT",0])] call CBA_fnc_hashSet;
 [_teamAccountHash,"CIVILIAN",(missionNamespace getVariable ["grad_lbm_teamFunds_CIVILIAN",0])] call CBA_fnc_hashSet;
 
+_allTaskData = [];
+if (!isNil allTasks) then {
+    {
+        _texts = _x call BIS_fnc_taskDescription;
+        _destination = getPos (_x call BIS_fnc_taskDestination select 0);
+        _state =  _x call BIS_fnc_taskState;
+        _allTaskData pushBack [_texts,_destination,_state];
+
+    } forEach allTasks;
+    [_teamAccountHash,"allTaskData",_allTaskData] call CBA_fnc_hashSet;
+};
+
 saveProfileNamespace;

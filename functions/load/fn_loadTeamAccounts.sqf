@@ -28,3 +28,17 @@ missionNamespace setVariable ["grad_lbm_teamFunds_WEST",[_teamAccountHash,"WEST"
 missionNamespace setVariable ["grad_lbm_teamFunds_EAST",[_teamAccountHash,"EAST"] call CBA_fnc_hashGet, true];
 missionNamespace setVariable ["grad_lbm_teamFunds_INDEPENDENT",[_teamAccountHash,"INDEPENDENT"] call CBA_fnc_hashGet, true];
 missionNamespace setVariable ["grad_lbm_teamFunds_CIVILIAN",[_teamAccountHash,"CIVILIAN"] call CBA_fnc_hashGet, true];
+
+_allTaskData = [_teamAccountHash,"allTaskData"] call CBA_fnc_hashGet;
+{
+    [WEST,
+    [format[ "%1_%2", ((_x select 0) select 1) select 0 , floor (random(4520)) ]],
+    _x select 0,
+    _x select 1,
+    _x select 2,
+    1,
+    true,
+    "",
+    true
+    ] call BIS_fnc_taskCreate;
+} forEach _allTaskData;

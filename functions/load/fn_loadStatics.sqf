@@ -16,6 +16,7 @@ _staticsData = [_staticsTag] call grad_persistence_fnc_getSaveData;
         _vectorDirAndUp = [_thisStaticHash,"vectorDirAndUp"] call CBA_fnc_hashGet;
         _damage = [_thisStaticHash,"damage"] call CBA_fnc_hashGet;
         _isGradFort = [_thisStaticHash,"isGradFort"] call CBA_fnc_hashGet;
+        _isGradFortCrate = [_thisStaticHash,"isGradFortCrate"] call CBA_fnc_hashGet;
 
         _thisStatic setVectorDirAndUp _vectorDirAndUp;
         _thisStatic setPosASL _posASL;
@@ -29,14 +30,12 @@ _staticsData = [_staticsTag] call grad_persistence_fnc_getSaveData;
             if (side _x == WEST) then {_blufor_player = _x};
           } forEach _all_players;
 
-          _log_it = [_thisStatic,_blufor_player] remoteExec ["grad_fortifications_fnc_initFort",0,true];
-          diag_log "Inicializacia FOrt";
-          diag_log _blufor_player;
-          diag_log _log_it;
-          diag_log _thisStatic;
+          [_thisStatic,_blufor_player] remoteExec ["grad_fortifications_fnc_initFort",0,true];
         };
-        diag_log "Is FOrt ?";
-        diag_log _isGradFort;
+        if (_isGradFortCrate && {isClass (missionConfigFile >> "CfgFunctions" >> "GRAD_fortifications")}) then{
+            _gradFortCrateType = [_thisStaticHash,"gradFortCrateType"] call CBA_fnc_hashGet;
+            [_thisStatic,_gradFortCrateType] remoteExec ["grad_fortifications_fnc_initDropCrate",0,true];
+        };
 
     }, [_thisStatic,_thisStaticHash]] call CBA_fnc_waitUntilAndExecute;
 
